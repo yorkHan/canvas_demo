@@ -4,6 +4,7 @@ var context=draw1.getContext('2d');
 autoSetCanvas(draw1)
 listenToUser(draw1)
 var erasering=false
+var lineWidth=5
 pen.onclick=function(){
     erasering=false
     pen.classList.add("active")
@@ -13,6 +14,28 @@ eraser.onclick=function(){
     erasering=true
     eraser.classList.add("active")
     pen.classList.remove("active")
+}
+clear.onclick=function(){
+    context.clearRect(0,0,draw1.clientWidth,draw1.clientHeight)
+}
+thin.onclick=function(){
+    lineWidth=5
+    thin.classList.add("active")
+    thick.classList.remove("active")
+}
+thick.onclick=function(){
+    lineWidth=10
+    thick.classList.add("active")
+    thin.classList.remove("active")
+}
+download.onclick=function(){
+    var url=draw1.toDataURL("image/png")
+    var a=document.createElement('a')
+    document.body.appendChild(a)
+    a.href=url
+    a.download='我的绘图'
+    a.target='_blank'
+    a.click()
 }
 black.onclick=function(){
     black.className="active"
@@ -109,7 +132,7 @@ function drawCircle(x,y,radius){
 function drawLine(x1,y1,x2,y2){
     context.beginPath();
     context.moveTo(x1,y1)
-    context.lineWidth=5
+    context.lineWidth=lineWidth
     context.lineTo(x2,y2)
     context.stroke()
     context.closePath()

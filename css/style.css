@@ -1,5 +1,5 @@
 body{
-    margin: 0;
+    overflow: hidden;
 }
 *{
     margin: 0;
@@ -38,6 +38,22 @@ ol.color>li{
     border-radius: 50%;
     margin: 15px 0;
 }
+ol.line{
+    position: fixed;
+    right:28px;
+}
+ol.line>li{
+    list-style: none;
+    height: 0px;
+    width: 25px;
+    margin: 15px 0;
+}
+ol.line>li.thin{
+    border-top:2px solid black;
+}
+ol.line>li.thick{
+    border-top:4px solid black;
+}
 #black{
     background-color: black;
 }
@@ -51,6 +67,10 @@ ol.color>li{
     background-color: yellow;
 }
 ol.color>li.active{
+    transform: scale(1.2);
+    transition-duration:0.3s;
+}
+ol.line>li.active{
     transform: scale(1.2);
     transition-duration:0.3s;
 }
