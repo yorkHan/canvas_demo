@@ -1,3 +1,6 @@
+document.body.ontouchstart=function(a){
+    a.preventDefault()
+}
 var draw1=document.getElementById("draw");
 var btn=document.getElementById("btn");
 var context=draw1.getContext('2d');
