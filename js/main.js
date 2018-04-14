@@ -2,7 +2,7 @@ var draw1=document.getElementById("draw");
 var btn=document.getElementById("btn");
 var context=draw1.getContext('2d');
 autoSetCanvas(draw1)
-listenToMouse(draw1)
+listenToUser(draw1)
 var erasering=false
 btn2.onclick=function(){
     erasering=true
@@ -12,35 +12,64 @@ btn1.onclick=function(){
     erasering=false
     actions.className="action"
 }
-function listenToMouse(canvas){
+function listenToUser(canvas){
 var using=false
 var lastPoint={x:undefined,y:undefined}
-canvas.onmousedown=function(mouse){
-    using=true
-    var x=mouse.clientX
-    var y=mouse.clientY
-    if(erasering){
-        context.clearRect(x,y,10,10)
-    }else{
-        lastPoint={"x":x,"y":y}
-    }
-}
-canvas.onmousemove=function(mouse){
-    var x=mouse.clientX
-    var y=mouse.clientY
-    if(using){
+if(document.body.ontouchstart!==undefined){
+    canvas.ontouchstart=function (aaa){
+        var x=aaa.touches[0].clientX
+        var y=aaa.touches[0].clientY
+        using=true
         if(erasering){
             context.clearRect(x,y,10,10)
         }else{
-            var newpoint={"x":x,"y":y}
-            drawLine(lastPoint.x,lastPoint.y,newpoint.x,newpoint.y)
-            lastPoint=newpoint
+            lastPoint={"x":x,"y":y}
         }
     }
-}
-canvas.onmouseup=function(){
-    using=false
-}
+    canvas.ontouchmove=function (aaa){
+        var x=aaa.touches[0].clientX
+        var y=aaa.touches[0].clientY
+        if(using){
+            if(erasering){
+                context.clearRect(x,y,10,10)
+            }else{
+                var newpoint={"x":x,"y":y}
+                drawLine(lastPoint.x,lastPoint.y,newpoint.x,newpoint.y)
+                lastPoint=newpoint
+            }
+        }
+    }
+    canvas.ontouchend=function (){
+        using=false
+    }
+}else{
+    canvas.onmousedown=function (mouse){
+        var x=mouse.clientX
+        var y=mouse.clientY
+        using=true
+        if(erasering){
+            context.clearRect(x,y,10,10)
+        }else{
+            lastPoint={"x":x,"y":y}
+        }
+    }
+    canvas.onmousemove=function (mouse){
+        var x=mouse.clientX
+        var y=mouse.clientY
+        if(using){
+            if(erasering){
+                context.clearRect(x,y,10,10)
+            }else{
+                var newpoint={"x":x,"y":y}
+                drawLine(lastPoint.x,lastPoint.y,newpoint.x,newpoint.y)
+                lastPoint=newpoint
+            }
+        }
+    }
+    canvas.onmouseup=function (){
+        using=false
+    }
+ } 
 }
 function drawCircle(x,y,radius){
     context.beginPath()
@@ -67,5 +96,5 @@ function autoSetCanvas(canvas){
     xxx()
     window.onresize=function(){
         xxx();
+        }
     }
-}
