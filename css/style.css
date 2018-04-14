@@ -1,21 +1,56 @@
 body{
     margin: 0;
 }
+*{
+    margin: 0;
+    padding: 0;
+}
 #draw{
     background-color: aqua;
     display: block;
 }
+.icon {
+    width: 1.5em; height: 1.5em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    margin: 0 14px;
+ }
+ .action>.icon.active {
+    transform: scale(1.2);
+    transition-duration:0.3s;
+    color:red;
+ }
 .action{
-    bottom: 0;
-    left: 0;
+    top: 15px;
+    left: 15px;
     position: fixed;
 }
-.action>#btn1{
-    display: none;
+ol.color{
+    position: fixed;
+    left: 28px;
 }
-.action.x>#btn1{
-    display: inline-block;
+ol.color>li{
+    list-style: none;
+    height: 15px;
+    width: 15px;
+    border:2px solid grey;
+    border-radius: 50%;
+    margin: 15px 0;
 }
-.action.x>#btn2{
-    display: none;
+#black{
+    background-color: black;
+}
+#red{
+    background-color: red;
+}
+#blue{
+    background-color: blue;
+}
+#yellow{
+    background-color: yellow;
+}
+ol.color>li.active{
+    transform: scale(1.2);
+    transition-duration:0.3s;
 }

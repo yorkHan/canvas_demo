@@ -4,13 +4,43 @@ var context=draw1.getContext('2d');
 autoSetCanvas(draw1)
 listenToUser(draw1)
 var erasering=false
-btn2.onclick=function(){
-    erasering=true
-    actions.className="action x"
-}
-btn1.onclick=function(){
+pen.onclick=function(){
     erasering=false
-    actions.className="action"
+    pen.classList.add("active")
+    eraser.classList.remove("active")
+}
+eraser.onclick=function(){
+    erasering=true
+    eraser.classList.add("active")
+    pen.classList.remove("active")
+}
+black.onclick=function(){
+    black.className="active"
+    blue.classList.remove("active")
+    yellow.classList.remove("active")
+    red.classList.remove("active")
+    context.strokeStyle="black"
+}
+red.onclick=function(){
+    red.className="active"
+    blue.classList.remove("active")
+    yellow.classList.remove("active")
+    black.classList.remove("active")
+    context.strokeStyle="red"
+}
+blue.onclick=function(){
+    blue.className="active"
+    red.classList.remove("active")
+    yellow.classList.remove("active")
+    black.classList.remove("active")
+    context.strokeStyle="blue"
+}
+yellow.onclick=function(){
+    yellow.className="active"
+    blue.classList.remove("active")
+    red.classList.remove("active")
+    black.classList.remove("active")
+    context.strokeStyle="yellow"
 }
 function listenToUser(canvas){
 var using=false
@@ -73,13 +103,11 @@ if(document.body.ontouchstart!==undefined){
 }
 function drawCircle(x,y,radius){
     context.beginPath()
-    context.fillStyle='black'
     context.arc(x,y,radius,0,Math.PI * 2);
     context.fill()
 }
 function drawLine(x1,y1,x2,y2){
     context.beginPath();
-    context.strokeStyle='black'
     context.moveTo(x1,y1)
     context.lineWidth=5
     context.lineTo(x2,y2)
