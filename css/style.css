@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+}
+#draw{
+    background-color: aqua;
+    display: block;
+}
+.action{
+    bottom: 0;
+    left: 0;
+    position: fixed;
+}
+.action>#btn1{
+    display: none;
+}
+.action.x>#btn1{
+    display: inline-block;
+}
+.action.x>#btn2{
+    display: none;
+}
