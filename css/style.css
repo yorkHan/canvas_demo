@@ -6,7 +6,7 @@ body{
     padding: 0;
 }
 #draw{
-    background-color: aqua;
+    background-color: white;
     display: block;
 }
 .icon {
