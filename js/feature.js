@@ -21,34 +21,6 @@ thick.onclick=function(){
     thick.classList.add("active")
     thin.classList.remove("active")
 }
-black.onclick=function(){
-    black.className="active"
-    blue.classList.remove("active")
-    yellow.classList.remove("active")
-    red.classList.remove("active")
-    context.strokeStyle="black"
-}
-red.onclick=function(){
-    red.className="active"
-    blue.classList.remove("active")
-    yellow.classList.remove("active")
-    black.classList.remove("active")
-    context.strokeStyle="red"
-}
-blue.onclick=function(){
-    blue.className="active"
-    red.classList.remove("active")
-    yellow.classList.remove("active")
-    black.classList.remove("active")
-    context.strokeStyle="blue"
-}
-yellow.onclick=function(){
-    yellow.className="active"
-    blue.classList.remove("active")
-    red.classList.remove("active")
-    black.classList.remove("active")
-    context.strokeStyle="yellow"
-}
 download.onclick=function(){
     var url=draw1.toDataURL("image/png")
     var a=document.createElement('a')
@@ -57,4 +29,16 @@ download.onclick=function(){
     a.download='我的绘图'
     a.target='_blank'
     a.click()
+}
+{
+    let view={
+
+    }
+    let model={
+
+    }
+    let controller={
+
+    }
+    controller.init(view,model)
 }
