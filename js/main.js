@@ -3,9 +3,8 @@ var btn=document.getElementById("btn");
 var context=draw1.getContext('2d');
 autoSetCanvas(draw1)
 listenToUser(draw1)
-var erasering=false
-var lineWidth=5
 
+var lineWidth=5
 function listenToUser(canvas){
 var using=false
 var lastPoint={x:undefined,y:undefined}

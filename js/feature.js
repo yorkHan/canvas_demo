@@ -35,7 +35,7 @@ download.onclick=function(){
 
     }
     let model={
-
+        erasering:false
     }
     let controller={
 
